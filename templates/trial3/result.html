@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Results</title>
+  </head>
+  <body>
+    <h1>Search Results</h1>
+    <p>Query parameters:</p>
+    <ul>
+      <li>Item Category: {{ item_category }}</li>
+      <li>Month 1: {{ month1 }}</li>
+      <li>Month 2: {{ month2 }}</li>
+      <li>Year 1: {{ year1 }}</li>
+      <li>Year 2: {{ year2 }}</li>
+      <li>Day: {{ day }}</li>
+    </ul>
+    <p>Search results:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Item Code</th>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Date</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in results %}
+        <tr>
+          <td>{{ row.item_code }}</td>
+          <td>{{ row.item }}</td>
+          <td>{{ row.price }}</td>
+          <td>{{ row.date }}</td>
+          <td>{{ row.source }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

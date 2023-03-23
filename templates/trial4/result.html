@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Query Results</title>
+</head>
+<body>
+	<h1>Query Results</h1>
+	{% if result %}
+		<table>
+			<thead>
+				<tr>
+					<th>Item</th>
+					<th>price</th>
+					<th>unit</th>
+					<th>Item Group</th>
+					<th>item_category</th>
+					<th>premise</th>
+					<th>Premise Type</th>
+					<th>State</th>
+					<th>District</th>
+					<th>Price</th>
+					<th>address</th>
+					<th>date</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for row in result %}
+					<tr>
+						<td>{{ row[0] }}</td>
+						<td>{{ row[1] }}</td>
+						<td>{{ row[2] }}</td>
+						<td>{{ row[3] }}</td>
+						<td>{{ row[4] }}</td>
+						<td>{{ row[5] }}</td>
+						<td>{{ row[6] }}</td>
+						<td>{{ row[7] }}</td>
+						<td>{{ row[8] }}</td>
+						<td>{{ row[9] }}</td>
+						<td>{{ row[10] }}</td>
+						<td>{{ row[11] }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<p>No data found for the specified parameters.</p>
+	{% endif %}
+</body>
+</html>
