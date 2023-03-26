@@ -1,3 +1,7 @@
+# This is fairly simple as this is a copy paste for the ingestion part, for DAG
+# The challenge is to install Airflow itself, as it is quite a hassle to find one that works for me 
+# Refer capture.png for screenshot of airflow UI
+
 import sqlite3
 import datetime
 import requests
