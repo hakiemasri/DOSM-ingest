@@ -4,22 +4,22 @@ https://open.dosm.gov.my/data-catalogue
 
 1. 
 This project uses python. You can install python using anaconda (https://docs.anaconda.com/anaconda/install/windows/) or  https://www.python.org/downloads/ 
-The library used are:
-pandas: a library for data manipulation and analysis
-sqlalchemy: a library for database interaction that provides a high-level interface for working with SQL databases
-sqlite3: a built-in Python library for working with SQLite databases
-datetime: a built-in Python library for working with dates and times
-requests: a library for making HTTP requests to web servers
-io: a built-in Python library for working with input/output streams
-pyarrow: a library for handling large data sets with efficient memory use and performance
-Flask: A web framework for Python.
-render_template: A function for rendering HTML templates.
-redirect: A function for redirecting to a different URL.
-sqlite3: A module for working with SQLite databases.
-math: A module for mathematical operations.
-SQLAlchemy: An Object Relational Mapper (ORM) for Python.
-text: A module for creating SQL expressions.
-abort: A function for handling HTTP errors.
+The library used are:<br/>
+pandas: a library for data manipulation and analysis<br/>
+sqlalchemy: a library for database interaction that provides a high-level interface for working with SQL databases<br/>
+sqlite3: a built-in Python library for working with SQLite databases<br/>
+datetime: a built-in Python library for working with dates and times<br/>
+requests: a library for making HTTP requests to web servers<br/>
+io: a built-in Python library for working with input/output streams<br/>
+pyarrow: a library for handling large data sets with efficient memory use and performance<br/>
+Flask: A web framework for Python.<br/>
+render_template: A function for rendering HTML templates.<br/>
+redirect: A function for redirecting to a different URL.<br/>
+sqlite3: A module for working with SQLite databases.<br/>
+math: A module for mathematical operations.<br/>
+SQLAlchemy: An Object Relational Mapper (ORM) for Python.<br/>
+text: A module for creating SQL expressions.<br/>
+abort: A function for handling HTTP errors.<br/>
   
 2.
 The databse used is sqlite, this is because my laptop ssd broke and sqlite are easy to install. Download here (https://www.sqlite.org/download.html)
