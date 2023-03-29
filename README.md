@@ -45,10 +45,10 @@ ingest.ipynb will ingest the data and create "DOSM.db".<br/>
 -ingest_pricecatcher_data is run to ingest price table.<br/>
     
 6.
-App.ipynb creates a web application. The application interacts with a DOSM.db to retrieve information about product prices from different premises. The web   application has two endpoints: the first one, accessed by the root URL "/", returns a template called "home.html"<br/>
-The second endpoint is accessed when the user submits a form, and it's located at "/result". This endpoint processes the form data, validates it, builds an SQL query, retrieves data from the database, and finally renders a template called "result.html" that displays the results.<br/>
-After running the script, we can go to localhost to query our database.<br/>
-Comma will be used ',' to query BETWEEN.<br/>
+App.ipynb creates a web application. The application interacts with a DOSM.db to retrieve information about product prices from different premises. The web   application has two endpoints: the first one, accessed by the root URL "/", returns a template called "home.html"<br/><br/>
+The second endpoint is accessed when the user submits a form, and it's located at "/result". This endpoint processes the form data, validates it, builds an SQL query, retrieves data from the database, and finally renders a template called "result.html" that displays the results.<br/><br/>
+After running the script, we can go to localhost to query our database.<br/><br/>
+Comma will be used ',' to query BETWEEN.<br/><br/>
 The result will be displayed limited to 50 per page.<br/>
 
 7.
