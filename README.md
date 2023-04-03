@@ -39,24 +39,25 @@ Flask is used to create web app.   https://pypi.org/project/Flask/<br/><br/><br/
 You will need to run the ingest_pricecatcher_data() function, which takes a SQLite database connection as its only argument. The function reads in Parquet files from the DOSM website, and stores the data in a SQLite database that contains three tables: Item, Premise, and Price. The Item table contains information about the items being priced, the Premise table contains information about the premises where the items are being priced, and the Price table contains the actual pricing data.<br/><br/>
   * Multiple price data are ingested using a  loop and  creates a table called IngestedURLs in the SQLite database to keep track of URLs that have already been ingested. Then it creates a list of URLs for all pricecatcher files from the current date back to January 2022.<br/>
   * For each URL, the function checks if the URL has already been ingested by querying the IngestedURLs table. If the URL has not been ingested, the function downloads     the Parquet file from the URL, reads it into a Pandas DataFrame, adds a source column to the DataFrame with the URL as its value, and slices the date column into       day, month, and year columns.<br/>
-* indexes are created to optimize performance.<br/>
+* Premise and item data are also ingested the same way as price data but only once.
+* indexes are created to optimize performance.<br/><br/>
 Note that we can also run ipynb files on python terminal if we create copy ipynb codes and ingest.py ,then running it in a python terminal in the same directory.<br/>
 ```python
 python ingest.py
 ```
     
-6.
-App.ipynb creates a web application. The application interacts with a DOSM.db to retrieve information about product prices from different premises. The web   application has two endpoints: the first one, accessed by the root URL "/", returns a template called "home.html"<br/><br/>
-The second endpoint is accessed when the user submits a form, and it's located at "/result". This endpoint processes the form data, validates it, builds an SQL query, retrieves data from the database, and finally renders a template called "result.html" that displays the results.<br/><br/>
-After running the script, we can go to localhost to query our database.<br/><br/>
-Comma will be used ',' to query BETWEEN.<br/><br/>
-The result will be displayed limited to 50 per page.<br/>
+* Secondly, run App.ipynb which will create a web application. The application interacts with DOSM.db to retrieve information."<br/><br/>
+* Open a web browser and go to http://localhost:5000/.
+* Select the desired item category, month, year, and day from the search form. Comma will be used ',' to query BETWEEN
+* The result will be displayed limited to 50 per page to save query time.<br/><br/>
 
-7.
-For the automation, please refer airflow/dags/ingest_and_alert.py<br/>
-Airflow DAG is used to schedule the (5) process script daily at midnight.<br/>
+
+* For the automation, please refer airflow/dags/ingest_and_alert.py<br/>
+* Airflow DAG is used to schedule the process script daily at midnight.<br/> 
+  * Run ingestion process 
+  *  uses telegram sends an alert via the Telegram app to https://t.me/dosmalrtgrp when the ingestion is complete or execption occurs when script is running.
+<br/> 
 Refer to Capture.png for screenshot of Airflow.<br/>
-Alert function uses telegram sends an alert via the Telegram app to https://t.me/dosmalrtgrp when the ingestion is complete or execption occurs when script is running.
 
 
 
