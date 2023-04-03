@@ -45,8 +45,8 @@ Note that we can also run ipynb files on python terminal if we create copy ipynb
 ```python
 python ingest.py
 ```
-    
-* Secondly, run App.ipynb which will create a web application. The application interacts with DOSM.db to retrieve information."<br/><br/>
+<br/><br/>  
+* Secondly, run App.ipynb which will create a web application. The application interacts with DOSM.db to retrieve information."<br/>
 * Open a web browser and go to http://localhost:5000/.
 * Select the desired item category, month, year, and day from the search form. Comma will be used ',' to query BETWEEN
 * The result will be displayed limited to 50 per page to save query time.<br/><br/>
