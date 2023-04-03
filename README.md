@@ -3,7 +3,7 @@ https://open.dosm.gov.my/data-catalogue
 
 
 1. 
-This project uses python. You can install python using anaconda (https://docs.anaconda.com/anaconda/install/windows/) or  https://www.python.org/downloads/ 
+This project uses python. You can install python and its libraries using anaconda (https://docs.anaconda.com/anaconda/install/windows/) or  https://www.python.org/downloads/ 
 The library used are:<br/><br/>
 pandas: a library for data manipulation and analysis<br/>
 sqlalchemy: a library for database interaction that provides a high-level interface for working with SQL databases<br/>
