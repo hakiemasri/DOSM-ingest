@@ -23,32 +23,27 @@ SQLAlchemy: An Object Relational Mapper (ORM) for Python.<br/>
 text: A module for creating SQL expressions.<br/>
 abort: A function for handling HTTP errors.<br/><br/><br/>
  
- 
 The databse used is sqlite, this is because my laptop ssd broke and sqlite are easy to install. Download here (https://www.sqlite.org/download.html)
 Although, postgress and mysql are also a good option.<br/><br/><br/>
  
-For automation and alert, telegram bot api and airflow is used. <br/><br/>
+For automation and alert, telegram bot api and airflow is used. <br/>
 Airflow is installed using docker. https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html<br/>
 Telegram api can be referred here.https://telegram-bot-sdk.readme.io/docs/getting-started<br/><br/><br/>
  
-
 Flask is used to create web app.   https://pypi.org/project/Flask/<br/><br/><br/>
 
 
 ## Usage
 
-First, we ingest the website using ingest.ipynb<br/>
+*First, we ingest the website using ingest.ipynb<br/>
+You will need to run the ingest_pricecatcher_data() function, which takes a SQLite database connection as its only argument. The function reads in Parquet files from the DOSM website, and stores the data in a SQLite database that contains three tables: Item, Premise, and Price. The Item table contains information about the items being priced, the Premise table contains information about the premises where the items are being priced, and the Price table contains the actual pricing data.<br/><br/>
+**Multiple price data are ingested using a  loop and  creates a table called IngestedURLs in the SQLite database to keep track of URLs that have already been ingested. Then it creates a list of URLs for all pricecatcher files from the current date back to January 2022.<br/>
+**For each URL, the function checks if the URL has already been ingested by querying the IngestedURLs table. If the URL has not been ingested, the function downloads     the Parquet file from the URL, reads it into a Pandas DataFrame, adds a source column to the DataFrame with the URL as its value, and slices the date column into       day, month, and year columns.<br/>
+*indexes are created to optimize performance.<br/>
 Note that we can also run ipynb files on python terminal if we create copy ipynb codes and ingest.py ,then running it in a python terminal in the same directory.<br/>
-```bash
+```python
 python ingest.py
 ```
-ingest.ipynb will ingest the data and create "DOSM.db" which will consist of thre tables .<br/><br/>
--The ingest_pricecatcher_data() function is used to ingest data from multiple Parquet files hosted on Google Cloud Storage into a SQLite database. <br/>
--The function first creates a table called IngestedURLs in the SQLite database to keep track of URLs that have already been ingested. It then creates a list of URLs     for all pricecatcher files from the current date back to January 2022.<br/>
--For each URL, the function checks if the URL has already been ingested by querying the IngestedURLs table. If the URL has not been ingested, the function downloads     the Parquet file from the URL, reads it into a Pandas DataFrame, adds a source column to the DataFrame with the URL as its value, and slices the date column into       day, month, and year columns.<br/>
--Table premise and item table are ingested using pandas.<br/>
--indexes are created to optimize performance.<br/>
--ingest_pricecatcher_data is run to ingest price table.<br/>
     
 6.
 App.ipynb creates a web application. The application interacts with a DOSM.db to retrieve information about product prices from different premises. The web   application has two endpoints: the first one, accessed by the root URL "/", returns a template called "home.html"<br/><br/>
