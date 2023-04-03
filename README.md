@@ -35,11 +35,11 @@ Flask is used to create web app.   https://pypi.org/project/Flask/<br/><br/><br/
 
 ## Usage
 
-*First, we ingest the website using ingest.ipynb<br/>
+* First, we ingest the website using ingest.ipynb<br/>
 You will need to run the ingest_pricecatcher_data() function, which takes a SQLite database connection as its only argument. The function reads in Parquet files from the DOSM website, and stores the data in a SQLite database that contains three tables: Item, Premise, and Price. The Item table contains information about the items being priced, the Premise table contains information about the premises where the items are being priced, and the Price table contains the actual pricing data.<br/><br/>
-**Multiple price data are ingested using a  loop and  creates a table called IngestedURLs in the SQLite database to keep track of URLs that have already been ingested. Then it creates a list of URLs for all pricecatcher files from the current date back to January 2022.<br/>
-**For each URL, the function checks if the URL has already been ingested by querying the IngestedURLs table. If the URL has not been ingested, the function downloads     the Parquet file from the URL, reads it into a Pandas DataFrame, adds a source column to the DataFrame with the URL as its value, and slices the date column into       day, month, and year columns.<br/>
-*indexes are created to optimize performance.<br/>
+** Multiple price data are ingested using a  loop and  creates a table called IngestedURLs in the SQLite database to keep track of URLs that have already been ingested. Then it creates a list of URLs for all pricecatcher files from the current date back to January 2022.<br/>
+** For each URL, the function checks if the URL has already been ingested by querying the IngestedURLs table. If the URL has not been ingested, the function downloads     the Parquet file from the URL, reads it into a Pandas DataFrame, adds a source column to the DataFrame with the URL as its value, and slices the date column into       day, month, and year columns.<br/>
+* indexes are created to optimize performance.<br/>
 Note that we can also run ipynb files on python terminal if we create copy ipynb codes and ingest.py ,then running it in a python terminal in the same directory.<br/>
 ```python
 python ingest.py
