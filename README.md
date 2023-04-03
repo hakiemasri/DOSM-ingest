@@ -1,5 +1,5 @@
 # DOSM ETL
-https://open.dosm.gov.my/data-catalogue
+This is an ETL that ingest data from https://open.dosm.gov.my/data-catalogue PriceCatcher section and creates a web app that is able to query the ingested data.
 
 
 ## Installation
