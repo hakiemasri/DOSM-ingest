@@ -1,9 +1,11 @@
-# DOSM-ingest
+# DOSM ETL
 https://open.dosm.gov.my/data-catalogue
 
 
-1. 
+## Installation
+
 This project uses python. You can install python and its libraries using anaconda (https://docs.anaconda.com/anaconda/install/windows/) or  https://www.python.org/downloads/ 
+
 The library used are:<br/><br/>
 pandas: a library for data manipulation and analysis<br/>
 sqlalchemy: a library for database interaction that provides a high-level interface for working with SQL databases<br/>
@@ -19,24 +21,28 @@ sqlite3: A module for working with SQLite databases.<br/>
 math: A module for mathematical operations.<br/>
 SQLAlchemy: An Object Relational Mapper (ORM) for Python.<br/>
 text: A module for creating SQL expressions.<br/>
-abort: A function for handling HTTP errors.<br/>
-  
-2.
-The databse used is sqlite, this is because my laptop ssd broke and sqlite are easy to install. Download here (https://www.sqlite.org/download.html)
-Although, postgress and mysql are also a good option.
+abort: A function for handling HTTP errors.<br/><br/><br/>
  
-3. 
+ 
+The databse used is sqlite, this is because my laptop ssd broke and sqlite are easy to install. Download here (https://www.sqlite.org/download.html)
+Although, postgress and mysql are also a good option.<br/><br/><br/>
+ 
 For automation and alert, telegram bot api and airflow is used. <br/><br/>
 Airflow is installed using docker. https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html<br/>
-Telegram api can be referred here.https://telegram-bot-sdk.readme.io/docs/getting-started<br/>
+Telegram api can be referred here.https://telegram-bot-sdk.readme.io/docs/getting-started<br/><br/><br/>
  
-4. 
-Flask is used to create web app.   https://pypi.org/project/Flask/
 
-5. 
+Flask is used to create web app.   https://pypi.org/project/Flask/<br/><br/><br/>
+
+
+## Usage
+
 First, we ingest the website using ingest.ipynb<br/>
-Note that we can run ipynb files on python terminal if we create ingest.py.<br/>
-ingest.ipynb will ingest the data and create "DOSM.db".<br/><br/>
+Note that we can also run ipynb files on python terminal if we create copy ipynb codes and ingest.py ,then running it in a python terminal in the same directory.<br/>
+```bash
+python ingest.py
+```
+ingest.ipynb will ingest the data and create "DOSM.db" which will consist of thre tables .<br/><br/>
 -The ingest_pricecatcher_data() function is used to ingest data from multiple Parquet files hosted on Google Cloud Storage into a SQLite database. <br/>
 -The function first creates a table called IngestedURLs in the SQLite database to keep track of URLs that have already been ingested. It then creates a list of URLs     for all pricecatcher files from the current date back to January 2022.<br/>
 -For each URL, the function checks if the URL has already been ingested by querying the IngestedURLs table. If the URL has not been ingested, the function downloads     the Parquet file from the URL, reads it into a Pandas DataFrame, adds a source column to the DataFrame with the URL as its value, and slices the date column into       day, month, and year columns.<br/>
